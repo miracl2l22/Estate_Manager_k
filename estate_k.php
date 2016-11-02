@@ -22,8 +22,12 @@ if ( ! class_exists( 'Estate_k' ) ) {
    
     private static $instance;
    
-    public function __construct() {
-     
+    public function __construct() { 
+    }
+    
+    public function add_file() {
+      require_once ( 'includes/class-post-type-property.php' );
+      require_once ( 'includes/class-metabox.php' );
     }
   }
 }
