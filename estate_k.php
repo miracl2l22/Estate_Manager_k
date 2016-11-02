@@ -1,3 +1,4 @@
+<?php
 /**
  * Plugin Name: Estate Manger k
  * Plugin URI: 
@@ -11,5 +12,19 @@
  * Text Domain: estatek
  * Domain Path: /languages/
  */
- 
- if ( ! defined( 'ABSPATH' ) ) exit;
+
+// Exit if accessed directely
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! class_exists( 'Estate_k' ) ) {
+
+  final class Estate_k {
+   
+    private static $instance;
+   
+    public function __construct() {
+     
+    }
+  }
+}
+?>
