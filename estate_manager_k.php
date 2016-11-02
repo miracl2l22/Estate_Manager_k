@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Estate Manger k
- * Plugin URI: 
+ * Plugin Name: Estate Manager k
+ * Plugin URI: http://
  * Description: Real Estate Management Wordpress Plugin
  * Version: 1.0
  * Author: miracl2l22
