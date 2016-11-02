@@ -16,19 +16,31 @@
 // Exit if accessed directely
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'Estate_k' ) ) {
+if ( ! class_exists( 'Estate_Manager_k' ) ) {
 
-  final class Estate_k {
+  final class Estate_Manager_k {
    
     private static $instance;
    
-    public function __construct() { 
+    public function __construct() {
+	  self::$instance->load_files();
     }
     
-    public function add_file() {
-      require_once ( 'includes/class-post-type-property.php' );
-      require_once ( 'includes/class-metabox.php' );
+    public function load_files() {
+      require_once ( 'includes/class-core.php' );
     }
+
+	public static function getInstance() {
+	  if ( ! isset( self::$instance ) ) {
+		self::$instance = new Estate_Manager_k;
+	  }
+	  return self::$instance;
+	}
   }
 }
-?>
+
+function Estate_Manager_k(){
+	return Estate_Manager_k::getInstance();
+}
+
+Estate_Manager_k();
