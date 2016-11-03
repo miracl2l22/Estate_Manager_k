@@ -1,13 +1,9 @@
 <?php
 /**
  * Plugin Name: Estate Manager k
- * Plugin URI: http://
- * Description: Real Estate Management Wordpress Plugin
- * Version: 1.0
+ * Description: 한국형 부동산 관리 워드프레스 플러그인
+ * Version: 0.1
  * Author: miracl2l22
- * Author URI: http://
- * Requires at least:
- * Tested up to: 
  *
  * Text Domain: estatek
  * Domain Path: /languages/
@@ -18,21 +14,28 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( ! class_exists( 'Estate_Manager_k' ) ) {
 
-  final class Estate_Manager_k {
+  class Estate_Manager_k {
    
     private static $instance;
+
+	public $core;
+
+	public $metabox;
    
     public function __construct() {
-	  self::$instance->load_files();
+	  $this -> load_files();
     }
     
     public function load_files() {
       require_once ( 'includes/class-core.php' );
+      require_once ( 'includes/class-metabox.php' );
     }
 
 	public static function getInstance() {
 	  if ( ! isset( self::$instance ) ) {
 		self::$instance = new Estate_Manager_k;
+		self::$instance->core = new Estate_Manager_Core;
+		self::$instance->metabox = new Estate_Manager_Metabox;
 	  }
 	  return self::$instance;
 	}
