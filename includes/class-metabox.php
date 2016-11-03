@@ -23,14 +23,6 @@ class Estate_Manager_Metabox extends Estate_Manager_k {
 		),
 	);
 
-	private $additional_fields = array(
-		array(
-			'id' => 'text',
-			'label' => 'Text',
-			'type' => 'text',
-		),
-	);
-
 	public function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_general_meta_box' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_additional_meta_box' ) );
@@ -50,64 +42,16 @@ class Estate_Manager_Metabox extends Estate_Manager_k {
 		}
 	}
 
-	public function add_additional_meta_box() {
-		foreach ( $this->screens as $screen ) {
-			add_meta_box(
-				'additional-property-info',
-				__( 'Additional Property Info', 'estatek' ),
-				array( $this, 'additional_meta_box_cb' ),
-				$screen,
-				'advanced',
-				'default'
-			);
-		}
-	}
-
 	public function general_meta_box_cb( $post ) {
 		wp_nonce_field( 'general_info_data', 'general_info_nonce' );
 		// echo 'Description';
 		$this->generate_general_fields( $post );
 	}
 
-	public function additional_meta_box_cb( $post ) {
-		wp_nonce_field( 'additional_info_data', 'additional_info_nonce' );
-		//echo 'Description';
-		$this->generate_additional_fields( $post );
-	}
-
-	public function generate_additional_fields( $post ) {
-		$output = '';
-		foreach ( $this->additional_fields as $field ) {
-			$label = '<label for="' . $field['id'] . '">' . __( $field['label'], 'estatek' ) . '</label>';
-			$db_value = get_post_meta( $post->ID, 'additional_info_' . $field['id'], true );
-			switch ( $field['type'] ) {
-				case 'checkbox':
-					$input = sprintf(
-						'<input %s id="%s" name="%s" type="checkbox" value="1">',
-						$db_value === '1' ? 'checked' : '',
-						$field['id'],
-						$field['id']
-					);
-					break;
-				default:
-					$input = sprintf(
-						'<input %s id="%s" name="%s" type="%s" value="%s">',
-						$field['type'] !== 'color' ? 'class="regular-text"' : '',
-						$field['id'],
-						$field['id'],
-						$field['type'],
-						$db_value
-					);
-			}
-			$output .= $this->row_format( $label, $input );
-		}
-		echo '<table class="form-table"><tbody>' . $output . '</tbody></table>';
-	}
-
 	public function generate_general_fields( $post ) {
 		$output = '';
 		foreach ( $this->general_fields as $field ) {
-			$label = '<label for="' . $field['id'] . '">' . $field['label'] . '</label>';
+			$label = '<label for="' . $field['id'] . '">' . __( $field['label'], 'estatek' ) . '</label>';
 			$db_value = get_post_meta( $post->ID, 'general_info_' . $field['id'], true );
 			switch ( $field['type'] ) {
 				case 'checkbox':
@@ -141,12 +85,35 @@ class Estate_Manager_Metabox extends Estate_Manager_k {
 		);
 	}
 
+	public function add_additional_meta_box() {
+		foreach ( $this->screens as $screen ) {
+			add_meta_box(
+				'additional-property-info',
+				__( 'Additional Property Info', 'estatek' ),
+				array( $this, 'additional_meta_box_cb' ),
+				$screen,
+				'advanced',
+				'default'
+			);
+		}
+	}
+
+	public function additional_meta_box_cb( $post ) {
+		wp_nonce_field( 'additional_info_data', 'additional_info_nonce' );
+
+		$db_value = get_post_meta( $post->ID, 'additional_info_' . $field['id'], true );
+		?>
+		<table class="form-table"><tbody>
+		</tbody></table><?php
+	}
+
 	public function save_post( $post_id ) {
-		if ( ! isset( $_POST['geneal_info_nonce'] ) )
+		if ( ! isset( $_POST['geneal_info_nonce'] ) || ! isset( $_POST['additional_info_nonce'] ) )
 			return $post_id;
 
-		$nonce = $_POST['geneal_info_nonce'];
-		if ( !wp_verify_nonce( $nonce, 'geneal_info_data' ) )
+		$g_nonce = $_POST['geneal_info_nonce'];
+		$a_nonce = $_POST['additional_info_nonce'];
+		if ( !wp_verify_nonce( $g_nonce, 'geneal_info_data' ) || !wp_verify_nonce( $a_nonce, 'additional_info_data' ) )
 			return $post_id;
 
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
