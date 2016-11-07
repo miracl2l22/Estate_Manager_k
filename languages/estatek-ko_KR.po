@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: estatek\n"
-"POT-Creation-Date: 2016-11-07 20:54+0900\n"
-"PO-Revision-Date: 2016-11-07 20:54+0900\n"
+"POT-Creation-Date: 2016-11-07 22:30+0900\n"
+"PO-Revision-Date: 2016-11-07 22:31+0900\n"
 "Last-Translator: \n"
 "Language-Team: miracl2l22\n"
 "Language: ko_KR\n"
@@ -65,71 +65,87 @@ msgstr "전체 매물 종류"
 msgid "General Info"
 msgstr "일반 정보"
 
-#: includes/class-metabox.php:28
+#: includes/class-metabox.php:25
+msgid "Deal Type"
+msgstr "거래 종류"
+
+#: includes/class-metabox.php:29
+msgid "Trading"
+msgstr "매매"
+
+#: includes/class-metabox.php:30
+msgid "Charter"
+msgstr "전세"
+
+#: includes/class-metabox.php:31
+msgid "Monrhly"
+msgstr "월세"
+
+#: includes/class-metabox.php:36 includes/class-metabox.php:41
 msgid "Price"
 msgstr "가격"
 
-#: includes/class-metabox.php:36
+#: includes/class-metabox.php:46
 msgid "Address"
 msgstr "주소"
 
-#: includes/class-metabox.php:44
+#: includes/class-metabox.php:53
 msgid "Additional Info"
 msgstr "추가 정보"
 
-#: includes/class-metabox.php:54
+#: includes/class-metabox.php:60
 msgid "Options"
 msgstr "옵션"
 
-#: includes/class-metabox.php:59
+#: includes/class-metabox.php:64
 msgid "TV"
 msgstr "TV"
 
-#: includes/class-metabox.php:60
+#: includes/class-metabox.php:65
 msgid "Frige"
 msgstr "냉장고"
 
-#: includes/class-metabox.php:61
+#: includes/class-metabox.php:66
 msgid "Washer"
 msgstr "세탁기"
 
-#: includes/class-metabox.php:62
+#: includes/class-metabox.php:67
 msgid "Aircon"
 msgstr "에어컨"
 
-#: includes/class-metabox.php:64
+#: includes/class-metabox.php:69
 msgid "Bed"
 msgstr "침대"
 
-#: includes/class-metabox.php:65
+#: includes/class-metabox.php:70
 msgid "Desk"
 msgstr "책상"
 
-#: includes/class-metabox.php:66
+#: includes/class-metabox.php:71
 msgid "Closet"
 msgstr "옷장"
 
-#: includes/class-metabox.php:67
+#: includes/class-metabox.php:72
 msgid "Shoe Closet"
 msgstr "신발장"
 
-#: includes/class-metabox.php:69
+#: includes/class-metabox.php:74
 msgid "Range"
 msgstr "가스레인지"
 
-#: includes/class-metabox.php:70
+#: includes/class-metabox.php:75
 msgid "Induction"
 msgstr "인덕션"
 
-#: includes/class-metabox.php:71
+#: includes/class-metabox.php:76
 msgid "Microwave"
 msgstr "전자레인지"
 
-#: includes/class-metabox.php:73
+#: includes/class-metabox.php:78
 msgid "Doorlock"
 msgstr "도어락"
 
-#: includes/class-metabox.php:74
+#: includes/class-metabox.php:79
 msgid "Bidet"
 msgstr "비데"
 
