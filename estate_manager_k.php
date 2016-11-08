@@ -20,6 +20,8 @@ if ( ! class_exists( 'Estate_Manager_k' ) ) {
 
 		public $core;
 
+		public $meta_boxes;
+
 		public function __construct() {
 			load_plugin_textdomain( 'estatek', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
@@ -33,8 +35,9 @@ if ( ! class_exists( 'Estate_Manager_k' ) ) {
 
 		public static function getInstance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance          = new Estate_Manager_k;
-				self::$instance->core    = new Estate_Manager_Core;
+				self::$instance           = new Estate_Manager_k;
+				self::$instance->core     = new Estate_Manager_Core;
+				self::$instance->meta_box = new Estate_Manager_Meta_Box;
 			}
 			return self::$instance;
 		}
